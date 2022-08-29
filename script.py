@@ -97,7 +97,6 @@ class Player(pygame.sprite.Sprite):
         else:
             self.image = character_d_img
 
-
     def update(self):
         self.food -= 0.3 / (FPS / 30)
         self.split += 1 / (FPS / 30)
@@ -135,7 +134,7 @@ class Player(pygame.sprite.Sprite):
                 if isinstance(i, Player):
                     i.rect.clamp(self)
                     self.destination = ()
-                    i.food -= self.damage if i.damage >= 6 else self.damage/4
+                    i.food -= self.damage if i.damage >= 6 else self.damage / 4
                     if self.parameters[1] > 1:
                         self.food -= math.fabs(self.damage)
                     if i.food <= 0:
@@ -179,6 +178,7 @@ def get_path(p1, p2):
         ValueError
     return vel
 
+
 fig, ax = plt.subplots()
 
 pygame.init()
@@ -202,7 +202,7 @@ while running:
     new_amount = 0
     y_x = 0
     y_y = 0
-    if counter >= food_frames/ (FPS / 30):
+    if counter >= food_frames / (FPS / 30):
         a = Food(random.randrange(1, int(WIDTH)), random.randrange(1, int(HEIGHT)))
         all_sprites.add(a)
         counter = 0
@@ -239,8 +239,8 @@ while running:
         total_y_x.append(y_x / amount if y_x != 0 else 0)
         total_y_y.append(y_y / amount if y_y != 0 else 0)
         total_ff_x.append(FPS / food_frames)
-        ax.plot(total_ff_x, total_y_y, color = 'red')
-        ax.plot(total_ff_x, total_y_x, color = 'blue')
+        ax.plot(total_ff_x, total_y_y, color='red')
+        ax.plot(total_ff_x, total_y_x, color='blue')
         fig.show()
         ax.cla()
         counter2 = 0
